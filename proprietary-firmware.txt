@@ -1,24 +1,24 @@
 ## All proprietary files from this list, unless pinned and noted otherwise,
 ## are from Xiaomi 14 (OS3.0.4.0.WNMCNXM). 
-abl.img;AB
-aop.img;AB
-aop_config.img;AB
-bluetooth.img;AB
-cpucp.img;AB
-devcfg.img;AB
-dsp.img;AB
-featenabler.img;AB
-hyp.img;AB
-imagefv.img;AB
-keymaster.img;AB
-modem.img;AB
-qupfw.img;AB
-shrm.img;AB
-tz.img;AB
-uefi.img;AB
-uefisecapp.img;AB
-xbl.img;AB
-xbl_config.img;AB
-xbl_ramdump.img;AB
+abl.img;AB|662a4ba6f1199193fc07fd5d4044344b919e13ea
+aop.img;AB|77374b009db3cda8e2039cfebee4c6fee87817fc
+aop_config.img;AB|323b0c2c940aec1d87a6a212769350edf00d6ab3
+bluetooth.img;AB|1ddeac0579e38bedd47167cab2e8025065ef4c9e
+cpucp.img;AB|9e1c571fa04d65815cf6c328d23e53c00ca1f822
+devcfg.img;AB|9109ebb4b3a047697ec93592bb1d14f3f3d56707
+dsp.img;AB|ec037a50c5ebd14701b01939948de80df6df80c1
+featenabler.img;AB|84c02c85f1734427e14420a663f28b4f93b4a183
+hyp.img;AB|dc2ac6bd9947f8dc896a79123df0232f435d1dd4
+imagefv.img;AB|11bf3f226263eb146817fe23e3a0b72211d89773
+keymaster.img;AB|7be0489e26d7d9428f7b4bc3ac9ad45e09355225
+modem.img;AB|e1411f59516ffc25dbc9d12c97c685d0143b3ed0
+qupfw.img;AB|6604cc4a04c08ef6371f72c944b99666086accda
+shrm.img;AB|e121e21cea4855e6e2a7fee8f952cc80e9f909ef
+tz.img;AB|5adec31e3bc09b7c3459c8ad160d592bbcf990d9
+uefi.img;AB|cc1b85239e08f9f6712f1c3e5a101a6fdb50ef9e
+uefisecapp.img;AB|478c3b1b6e839e40afd5713e7ac13830edb0d39a
+xbl.img;AB|4dd5208d05d7ed443fbe32601cba2cf7ad5e9326
+xbl_config.img;AB|f1b34c968386f4d4c4f694691cb01efbf5f032b5
+xbl_ramdump.img;AB|a9c04f0a227ba5c85aad746aae8734addf917dfa
 
 

@@ -1,0 +1,3 @@
+# The Goodix fingerprint HAL runs as system and needs access when this node is
+# created after boot by the manet fingerprint driver.
+/dev/goodix_fp 0660 system system

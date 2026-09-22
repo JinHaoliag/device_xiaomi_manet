@@ -4,3 +4,15 @@ binder_call(hal_camera_default, platform_app)
 # The Xiaomi camera provider publishes its synthetic camera registrar through
 # servicemanager for virtual camera clients.
 add_service(hal_camera_default, vendor_xiaomi_virtual_camera_service)
+
+# The provider implements Xiaomi's always-on camera HAL.  Its registration is
+# performed during provider startup, before framework cameraserver connects.
+hal_server_domain(hal_camera_default, hal_camera_aon)
+
+# CamX opens these vendor camera character devices while probing sensors.
+# rw_file_perms includes open, which is required in addition to read/write.
+allow hal_camera_default vendor_miev_device:chr_file rw_file_perms;
+allow hal_camera_default camlog_device:chr_file rw_file_perms;
+
+# Camera configuration selects SoC-specific tuning at provider startup.
+get_prop(hal_camera_default, vendor_soc_id_prop)

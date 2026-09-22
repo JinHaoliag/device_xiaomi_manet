@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: Apache-2.0
+
+// The manet stock primary audio HAL needs this compatibility symbol after the
+// blob fixup used by the paired desktop sm8650-common tree.
+cc_library_shared {
+    name: "libar_gpr_shim",
+    srcs: ["libar_gpr_shim.cpp"],
+    shared_libs: ["liblog"],
+    vendor: true,
+}

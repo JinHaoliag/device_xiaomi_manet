@@ -1,0 +1,8 @@
+type hal_mlipay_hwservice, hwservice_manager_type;
+
+hwbinder_use(hal_mlipay_default)
+allow hal_mlipay_default vendor_miev_device:chr_file rw_file_perms;
+get_prop(hal_mlipay_default, vendor_fp_prop)
+add_hwservice(hal_mlipay_server, hal_mlipay_hwservice)
+binder_call(system_app, hal_mlipay_default)
+allow system_app hal_mlipay_hwservice:hwservice_manager find;

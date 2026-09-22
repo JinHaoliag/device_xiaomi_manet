@@ -1,0 +1,57 @@
+cc_prebuilt_library_shared {
+    name: "libmlipay@1.1-prebuilt",
+    stem: "libmlipay@1.1",
+    owner: "xiaomi",
+    strip: { none: true },
+    target: {
+        android_arm64: {
+            srcs: ["vendor/lib64/libmlipay@1.1.so"],
+            shared_libs: [
+                "vendor.xiaomi.hardware.mtdservice@1.0",
+                "liblog", "libcutils", "libutils", "libQSEEComAPI",
+                "libhidlbase", "libmisight", "libc++", "libc", "libm", "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    check_elf_files: false,
+    prefer: true,
+    soc_specific: true,
+}
+
+cc_prebuilt_binary {
+    name: "mlipayd@1.1",
+    owner: "xiaomi",
+    target: {
+        android_arm64: {
+            srcs: ["vendor/bin/mlipayd@1.1"],
+            shared_libs: [
+                "vendor.xiaomi.hardware.mtdservice@1.0",
+                "liblog", "libcutils", "libutils", "libQSEEComAPI",
+                "libhidlbase", "libmisight", "libmlipay@1.1-prebuilt",
+                "libc++", "libc", "libm", "libdl",
+            ],
+        },
+    },
+    compile_multilib: "64",
+    check_elf_files: false,
+    strip: { none: true },
+    prefer: true,
+    soc_specific: true,
+}
+
+prebuilt_etc {
+    name: "mlipay-hidl-1.1-rc",
+    src: "vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc",
+    filename_from_src: true,
+    sub_dir: "init",
+    soc_specific: true,
+}
+
+prebuilt_etc_xml {
+    name: "manifest_vendor.xiaomi.hardware.mlipay-hidl.xml",
+    src: "vendor/etc/vintf/manifest/manifest_vendor.xiaomi.hardware.mlipay.xml",
+    filename_from_src: true,
+    sub_dir: "vintf/manifest",
+    soc_specific: true,
+}

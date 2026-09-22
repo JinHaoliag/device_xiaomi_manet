@@ -9,13 +9,21 @@ KERNEL_PATH := $(DEVICE_PATH)-kernel
 # Inherit from sm8650-common
 include device/xiaomi/sm8650-common/BoardConfigCommon.mk
 
-# Audio
-DEVICE_MANIFEST_PINEAPPLE_FILES += \
-    $(DEVICE_PATH)/configs/vintf/manifest_audio.xml
+# Manet uses the partition geometry from its stock firmware, which differs
+# from the generic LOS24 pineapple common profile.
+BOARD_DTBOIMG_PARTITION_SIZE := 20971520
+BOARD_SUPER_PARTITION_SIZE := 8759646296
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 8755451992
 
-# GNSS
-DEVICE_MANIFEST_PINEAPPLE_FILES += \
-    $(DEVICE_PATH)/configs/vintf/manifest_gnss.xml
+# Manet's touchscreen driver uses the newer xiaomi-touch ioctl payload. Keep
+# the implementation local so the shared common tree remains device-agnostic.
+TARGET_POWERHAL_MODE_EXT := $(DEVICE_PATH)/power/power-mode.cpp
+SOONG_CONFIG_NAMESPACES += qtipower
+SOONG_CONFIG_qtipower += mode_ext_lib
+SOONG_CONFIG_qtipower_mode_ext_lib := power_mode_ext
+
+DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
+    $(DEVICE_PATH)/configs/vintf/compatibility_matrix.mlipay-hidl.xml
 
 # Display density (matches the stock manet profile)
 TARGET_SCREEN_DENSITY := 560
@@ -46,6 +54,13 @@ PRODUCT_COPY_FILES += \
 TARGET_OTA_ASSERT_DEVICE := manet
 
 # Properties
+# Keep the property baseline paired with manet's stock audio, Bluetooth and
+# modem blobs. Filter only these two common inputs; ODM, product and system_ext
+# properties continue to come from the LOS24 shared tree.
+TARGET_SYSTEM_PROP := $(filter-out $(COMMON_PATH)/configs/properties/system.prop,$(TARGET_SYSTEM_PROP))
+TARGET_VENDOR_PROP := $(filter-out $(COMMON_PATH)/configs/properties/vendor.prop,$(TARGET_VENDOR_PROP))
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system-common.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor-common.prop
 TARGET_ODM_PROP += $(DEVICE_PATH)/configs/properties/odm.prop
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/configs/properties/system.prop
 

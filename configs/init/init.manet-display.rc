@@ -3,9 +3,3 @@
 # deterministic restore trigger instead of depending on service-state timing.
 on property:vendor.display.target.version=4
     setprop vendor.display.enable_fb_scaling 1
-
-# StorageManager does not enqueue the primary emulated-volume mount on this
-# device during boot. Trigger the same framework mount operation after the
-# system is fully booted so apps get a usable external-files directory.
-on property:sys.boot_completed=1
-    exec_background -- /system/bin/sm mount "emulated;0"

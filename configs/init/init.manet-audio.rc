@@ -1,0 +1,5 @@
+# The stock manet audio calibration service persists generated ACDB data here.
+# This is device-specific and therefore must not be added to sm8650-common.
+on post-fs-data
+    mkdir /data/vendor/audio/acdbdata 0770 media audio
+    mkdir /data/vendor/audio/acdbdata/delta 0770 media audio

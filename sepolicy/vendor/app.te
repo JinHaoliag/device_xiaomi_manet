@@ -1,0 +1,4 @@
+# Apps need to read the fingerprint and payment-security properties (e.g. for
+# fingerprint unlock and FIDO/IFAA payment flows).
+get_prop({ appdomain -isolated_app_all }, vendor_fp_prop)
+get_prop({ appdomain -isolated_app_all }, vendor_payment_security_prop)
