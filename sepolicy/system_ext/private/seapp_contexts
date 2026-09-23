@@ -1,0 +1,4 @@
+# The Bluetooth Mainline APK is currently assigned the default seinfo label.
+# Keep it confined to the existing bluetooth domain instead of letting zygote
+# abort while trying to resolve the platform-only bluetooth seapp rule.
+user=bluetooth seinfo=default isPrivApp=true name=com.android.bluetooth domain=bluetooth type=bluetooth_data_file

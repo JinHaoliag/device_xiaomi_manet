@@ -265,13 +265,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                              channelMasks="AUDIO_CHANNEL_IN_MONO AUDIO_CHANNEL_IN_STEREO AUDIO_CHANNEL_IN_FRONT_BACK AUDIO_CHANNEL_INDEX_MASK_3"/>
 
                 </mixPort>
-                <!-- MIUI ADD: Audio_MultiRoute -->
-                <mixPort name="virtual_deep_buffer" role="source"
-                        flags="AUDIO_OUTPUT_FLAG_VIRTUAL_DEEP_BUFFER">
-                    <profile name="" format="AUDIO_FORMAT_PCM_24_BIT_PACKED"
-                            samplingRates="48000" channelMasks="AUDIO_CHANNEL_OUT_STEREO"/>
-                </mixPort>
-                <!-- END Audio_MultiRoute -->
                 <mixPort name="hifi_input" role="sink" />
             </mixPorts>
 
@@ -321,12 +314,6 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000 11025 16000 22050 32000 44100 48000 64000 88200 96000 128000 176400 192000"/>
                 </devicePort>
-                <!-- MIUI ADD: Audio_MultiRoute -->
-                <devicePort tagName="Multiroute" type="AUDIO_DEVICE_OUT_MULTIROUTE" role="sink">
-                    <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
-                             samplingRates="8000,11025,16000,22050,32000,44100,48000,64000,88200,96000,128000,176400,192000" channelMasks="AUDIO_CHANNEL_IN_STEREO"/>
-                </devicePort>
-                <!-- END Audio_MultiRoute -->
                 <devicePort tagName="IP out" type="AUDIO_DEVICE_OUT_IP" role="sink">
                     <profile name="" format="AUDIO_FORMAT_PCM_16_BIT"
                              samplingRates="8000 11025 16000 22050 32000 44100 48000 64000 88200 96000 128000 176400 192000"/>
@@ -461,12 +448,8 @@ SPDX-License-Identifier: BSD-3-Clause-Clear
                        sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,mmap_no_irq_out,haptics output,Telephony Rx"/>
                 <route type="mix" sink="HDMI"
                        sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,voip_rx,haptics output,Telephony Rx"/>
-                <!-- MIUI ADD: Audio_MultiRoute -->
                 <route type="mix" sink="Proxy"
-                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload,virtual_deep_buffer"/>
-                <route type="mix" sink="Multiroute"
-                       sources="virtual_deep_buffer"/>
-                <!-- END Audio_MultiRoute -->
+                       sources="primary output,raw,deep_buffer,direct_pcm,compressed_offload"/>
                 <route type="mix" sink="IP out"
                        sources="primary output,deep_buffer,direct_pcm,compressed_offload,haptics output"/>
                 <route type="mix" sink="FM"
